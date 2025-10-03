@@ -10,7 +10,7 @@ contract PredictionMarketResponse {
         uint256 noPriceChange,
         uint256 timestamp
     );
-    
+
     function executeManipulationResponse(
         uint256 marketId,
         address manipulator,
@@ -19,12 +19,7 @@ contract PredictionMarketResponse {
         uint256 noPriceChange
     ) external {
         emit MarketManipulationDetected(
-            marketId,
-            manipulator,
-            tradeSize,
-            yesPriceChange,
-            noPriceChange,
-            block.timestamp
+            marketId, manipulator, tradeSize, yesPriceChange, noPriceChange, block.timestamp
         );
     }
 }
