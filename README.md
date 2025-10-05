@@ -80,7 +80,7 @@ drosera_address = "0x91cB447BaFc6e0EA0F4Fe056F5a9b1F14bb06e5D"
 [traps]
 [traps.prediction_market_manipulation]
 path = "out/PredictionMarketTrapDeployable.sol/PredictionMarketTrapDeployable.json"
-response_contract = "YOUR_RESPONSE_CONTRACT_ADDRESS"
+response_contract = "0xE8a61b9229CCf35B5cA384226A12c060671C2b56"
 response_function = "executeManipulationResponse(uint256,address,uint256,uint256,uint256)"
 cooldown_period_blocks = 6
 min_number_of_operators = 1
@@ -88,7 +88,7 @@ max_number_of_operators = 2
 block_sample_size = 2
 private_trap = true
 whitelist = ["YOUR_WALLET_ADDRESS"]
-address = "YOUR_TRAP_DEPLOYABLE_ADDRESS"
+address = "YOUR_TRAP_ADDRESS"
 ```
 
 ### Step 4: Test Drosera DryRun
