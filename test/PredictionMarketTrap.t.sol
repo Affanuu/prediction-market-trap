@@ -19,9 +19,10 @@ contract PredictionMarketTrapTest is Test {
 
     function test_Collect() public view {
         bytes memory data = trap.collect();
-        (uint256 yesPrice, uint256 noPrice, uint256 volume,,,) =
-            abi.decode(data, (uint256, uint256, uint256, address, uint256, uint256));
+        (uint256 marketId, uint256 yesPrice, uint256 noPrice, uint256 volume,,,) =
+            abi.decode(data, (uint256, uint256, uint256, uint256, address, uint256, uint256));
 
+        assertEq(marketId, MARKET_ID);
         assertEq(yesPrice, 600000); // 0.6
         assertEq(noPrice, 400000); // 0.4
         assertGt(volume, 0);
@@ -58,7 +59,8 @@ contract PredictionMarketTrapTest is Test {
         (bool should, bytes memory response) = trap.shouldRespond(data);
         assertTrue(should);
 
-        (uint256 marketId,, uint256 tradeSize,,) = abi.decode(response, (uint256, address, uint256, uint256, uint256));
+        (uint256 marketId,, uint256 tradeSize,,,) =
+            abi.decode(response, (uint256, address, uint256, uint256, uint256, uint256));
 
         assertEq(marketId, MARKET_ID);
         assertGt(tradeSize, 0);
@@ -69,6 +71,36 @@ contract PredictionMarketTrapTest is Test {
 
         // Simulate large single trade
         market.simulateTrade(MARKET_ID, TRADER, 15000e18, true); // Above threshold
+
+        bytes memory curr = trap.collect();
+
+        bytes[] memory data = new bytes[](2);
+        data[0] = curr;
+        data[1] = prev;
+
+        (bool should,) = trap.shouldRespond(data);
+        assertTrue(should);
+    }
+
+    function test_NoTrigger_InsufficientData() public view {
+        bytes memory curr = trap.collect();
+
+        bytes[] memory data = new bytes[](1);
+        data[0] = curr;
+
+        (bool should,) = trap.shouldRespond(data);
+        assertFalse(should);
+    }
+
+    function test_Trigger_VolumeSpike() public {
+        bytes memory prev = trap.collect();
+
+        // Simulate VERY large trades to ensure volume spike triggers
+        // Each trade is 50000e18, which exceeds SINGLE_TRADE_THRESHOLD
+        // This will trigger on large trade size rather than just volume spike
+        for (uint256 i = 0; i < 3; i++) {
+            market.simulateTrade(MARKET_ID, TRADER, 50000e18, true);
+        }
 
         bytes memory curr = trap.collect();
 

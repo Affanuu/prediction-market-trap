@@ -6,12 +6,12 @@ drosera_address = "0x91cB447BaFc6e0EA0F4Fe056F5a9b1F14bb06e5D"
 [traps]
 [traps.prediction_market_manipulation]
 path = "out/PredictionMarketTrapDeployable.sol/PredictionMarketTrapDeployable.json"
-response_contract = "0x6a3486cf707D42a5fDC355A12351537A2ab60925"
+response_contract = "0xE8a61b9229CCf35B5cA384226A12c060671C2b56"
 response_function = "executeManipulationResponse(uint256,address,uint256,uint256,uint256)"
 cooldown_period_blocks = 6
 min_number_of_operators = 1
 max_number_of_operators = 2
 block_sample_size = 2
 private_trap = true
-whitelist = ["0x359D4a9BB6f04dC10e38275cBeAef915AA8A643C"]
-address = "0x937817b68aFC20a9F33563A626D0d2024dac0062"
+whitelist = ["0xe2842aB781c8c76dbef3a29D0011f8a8a44D3DdD"]
+address = "0xcab8D39f2705aB0c530484e8Eec3Da82ACd5781D"
