@@ -1,4 +1,4 @@
-### Prediction Market Trap 🎯
+## Prediction Market Trap 💹🪤
 
 A Drosera smart contract trap for detecting and preventing prediction market manipulation through real-time monitoring and automated response mechanisms.
 
