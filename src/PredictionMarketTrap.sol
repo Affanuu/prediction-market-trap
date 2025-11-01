@@ -29,7 +29,7 @@ contract PredictionMarketTrap is ITrap {
 
     // Thresholds for detecting manipulation (immutable for deterministic behavior)
     uint256 public constant PRICE_MANIPULATION_THRESHOLD = 200000; // 20% price change
-    uint256 public constant VOLUME_SPIKE_THRESHOLD = 400; // 5x volume increase (i.e., +400%)
+    uint256 public constant VOLUME_SPIKE_THRESHOLD = 400; // 5x volume increase (+400%)
     uint256 public constant SINGLE_TRADE_THRESHOLD = 10000e18; // Large single trade
 
     constructor(address _predictionMarket, uint256 _marketId) {
