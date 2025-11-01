@@ -5,7 +5,7 @@ This is a Drosera smart contract trap for detecting and preventing prediction ma
 The trap mechanism monitors prediction markets for suspicious activities including:
 
 - **Price Manipulation**: Detects abnormal price movements (>20% change)
-- **Volume Spikes**: Identifies unusual trading volume increases (>5x)
+- **Volume Spikes**: Identifies unusual trading volume increases (5x increase)
 - **Market Manipulation Patterns**: Recognizes coordinated manipulation attempts
 
 ### How It Works
