@@ -165,7 +165,7 @@ contract PredictionMarketTrapDeployable is ITrap {
         if (prevVolume > 0 && currVolume > prevVolume) {
             unchecked {
                 // Calculate percentage increase: ((currVolume - prevVolume) * 100) / prevVolume
-                // VOLUME_SPIKE_THRESHOLD = 400 means +400% (i.e., 5x increase)
+                // VOLUME_SPIKE_THRESHOLD = 400 means +400% (5x increase)
                 uint256 volumeIncrease = ((currVolume - prevVolume) * 100) / prevVolume;
                 
                 if (volumeIncrease > VOLUME_SPIKE_THRESHOLD) {
