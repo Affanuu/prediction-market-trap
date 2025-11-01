@@ -141,7 +141,7 @@ contract PredictionMarketTrap is ITrap {
         // Check 3: Volume spike (most expensive - division operation)
         if (prevVolume > 0 && currVolume > prevVolume) {
             unchecked {
-                // VOLUME_SPIKE_THRESHOLD = 400 means +400% (i.e., 5x increase)
+                // VOLUME_SPIKE_THRESHOLD = 400 means +400% (5x increase)
                 uint256 volumeIncrease = ((currVolume - prevVolume) * 100) / prevVolume;
                 
                 if (volumeIncrease > VOLUME_SPIKE_THRESHOLD) {
