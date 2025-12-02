@@ -1,8 +1,0 @@
-.env
-*.env
-broadcast/
-cache/
-out/
-node_modules/
-.DS_Store
-drosera.toml
